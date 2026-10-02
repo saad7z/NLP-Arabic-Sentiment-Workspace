@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com https://github.com; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Arabic sentiment analysis — Team 2</title>
+  <link rel="stylesheet" href="workspace.css">
+  <script defer src="files.js"></script>
+  <script defer src="workspace.js"></script>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>Arabic sentiment analysis</h1><p>Team 2's collected Arabic text and human sentiment labels.</p></div>
+    <button id="connection" class="small" type="button">Connect</button>
+  </header>
+  <section class="extension" aria-label="Collection extension">
+    <a class="button extension-button" href="https://chromewebstore.google.com/detail/web-scraper-free-web-scra/jnhgnonknehpejjnehehllkliplmbmhn" target="_blank" rel="noopener noreferrer">Install Web Scraper</a>
+    <a class="button extension-button secondary" href="https://github.com/martinsbalodis/web-scraper-chrome-extension" target="_blank" rel="noopener noreferrer">Extension repository</a>
+  </section>
+  <button id="upload-raw" class="button primary wide" type="button">Upload raw data</button>
+  <input id="raw-file" type="file" accept=".csv,.xlsx" hidden>
+  <p id="status" role="status" aria-live="polite"></p>
+  <section class="files" aria-label="Participant files">
+    <div class="section-heading"><h2>Files</h2><button id="refresh" class="small" type="button">Refresh</button></div>
+    <nav id="filters" aria-label="Filter by participant"><button type="button" aria-pressed="true" data-owner="all">All</button></nav>
+    <ul id="file-list"><li class="empty">Connect to view the team's files.</li></ul>
+  </section>
+  <section class="shared" aria-label="Shared table">
+    <button id="publish" class="button primary wide" type="button">Publish a classified file</button>
+    <input id="classified-file" type="file" accept=".csv,.xlsx" hidden>
+    <button id="view-shared" class="button wide secondary" type="button">View shared table</button>
+    <div id="shared-panel" hidden>
+      <div class="section-heading"><h2>Shared table</h2><button id="close-shared" class="small" type="button">Close</button></div>
+      <div class="downloads"><button id="shared-excel" type="button">Download Excel</button><button id="shared-csv" type="button">Download CSV</button><span id="shared-count"></span></div>
+      <div class="table-scroll" tabindex="0" aria-label="Shared table rows"><table><thead id="shared-head"></thead><tbody id="shared-body"></tbody></table></div>
+      <button id="more-rows" class="small" type="button" hidden>Show more rows</button>
+    </div>
+  </section>
+</main>
+<dialog id="connect-dialog" aria-labelledby="connect-title">
+  <h2 id="connect-title">Connect to the repository</h2>
+  <p>Use your own fine-grained GitHub token with Contents: Read and write for this repository.</p>
+  <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Create a token</a></p>
+  <label for="token">GitHub token</label>
+  <input id="token" type="password" autocomplete="off" spellcheck="false">
+  <p class="hint">The token stays in this tab's memory and is sent only to GitHub.</p>
+  <p id="connect-error" role="alert"></p>
+  <div class="dialog-actions"><button id="connect-submit" class="primary" type="button">Connect</button><button id="connect-cancel" type="button">Cancel</button></div>
+</dialog>
+</body>
+</html>
